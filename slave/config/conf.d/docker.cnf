@@ -1,0 +1,70 @@
+[mysqld]
+# 最大连接数
+max_connections=1000
+# 指定单个查询可以使用的缓冲区的大小，一般默认值是1M
+# query_cache_limit=1M
+# 查询的缓存大小设置
+# query_cache_size=8M
+# 设置缓存的类型 (0表示禁用缓存 / 1缓存所有结果)
+# query_cache_type=1
+# 用户连接数的最大值设置
+max_user_connections=300
+# 超时等待时间,单位秒,一个connection在若干秒内无响应，则服务器切断与这个客户端的连接
+wait_timeout=9000
+# 客户端与服务器建立连接时,服务器返回错误的握手协议前,等待数据包到来的最大时间,单位秒
+connect_timeout=30
+# 线程池缓存大小 (当客户端断开连接后 将当前线程缓存起来 当在接到新的连接请求时快速响应 无需创建新的线程)
+thread_cache_size=16
+# 索引缓冲区的大小
+key_buffer_size=4M
+# 查询语句中如果较多次使用join查询时,可适当增大该参数,默认2M
+join_buffer_size=1M
+# 可创建内存表的大小
+max_heap_table_size=4M
+# 设置服务器降低写操作的优先级,设置为1表示以读为主
+low_priority_updates=1
+# 设置一次消息传输的最大值
+# max_allowd_packet=8M
+# 设置基于key查询允许的最大查找次数
+max_seeks_for_key=32
+# 通过增加该值的大小可以提高查询中使用"group by"和"order by"的性能
+sort_buffer_size=4M
+# 设置服务器读缓冲区的大小
+read_buffer_size=4M
+# 客户端连接服务器在没有成功时就被阻断了,累计后超过这个设置的值时,服务器将阻止该客户端后续的所有访问
+max_connect_errors=10
+# 服务器重建索引时允许建立的最大临时文件的大小
+myisam_sort_buffer_size=32M
+# 设置临时内部堆积表(Heap)的大小
+tmp_table_size=32M
+# 设置服务器随机读取缓冲区的大小
+read_rnd_buffer_size=1M
+# 控制文件打开的个数
+# open_file_limit=1024
+# 在执行第一次查询之前执行
+init_connect="SET NAMES utf8mb4"
+# 禁用主机名ip缓存
+skip-host-cache
+# 禁用DNS解析
+skip-name-resolve
+# 新数据库或数据表的默认字符集
+character-set-server=utf8mb4
+# 新数据库或数据表的默认排序方式
+collation_server=utf8mb4_unicode_ci
+# 默认存储引擎
+default-storage-engine=INNODB
+# 这个选项决定着什么时候把日志信息写入日志文件以及什么时候把这些文件物理地写(术语称为”同步”)到硬盘上
+# 设置值0的意思是每隔一秒写一次日志并进行同步,这可以减少硬盘写操作次数,但可能造成数据丢失
+# 设置值1(设置设置)的意思是在每执行完一条COMMIT命令就写一次日志并进行同步,这可以防止数据丢失,但硬盘写操作可能会很频繁
+# 设置值2是一般折衷的办法,即每执行完一条COMMIT命令写一次日志,每隔一秒进行一次同步
+innodb-flush-log-at-trx-commit=0
+# 默认时区
+default-time_zone="+8:00"
+# 默认密码加密插件
+default-authentication-plugin=mysql_native_password
+
+[client]
+default-character-set=utf8mb4
+
+[mysql]
+default-character-set=utf8mb4
