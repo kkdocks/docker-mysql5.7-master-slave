@@ -2,11 +2,11 @@ version: "3"
 services:
   master:
     image: mysql:5.7
-    container_name: mysql5.7
+    container_name: mysql-master
     ports:
       - 3306:3306
     networks:
-      - mysql-slave-network
+      - mysql-master-slave-network
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: "123456"
@@ -18,11 +18,11 @@ services:
 
   slave:
     image: mysql:5.7
-    container_name: mysql5.7
+    container_name: mysql-slave
     ports:
       - 3307:3306
     networks:
-      - mysql-slave-network
+      - mysql-master-slave-network
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: "123456"
@@ -33,5 +33,5 @@ services:
     privileged: true
 
 networks:
-  mysql-slave-network:
+  mysql-master-slave-network:
     driver: bridge
