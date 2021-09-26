@@ -1,4 +1,15 @@
 [mysqld]
+# 主数据库端ID
+server_id=1
+# 开启二进制日志
+log-bin=mysql-bin
+# 指定数据库binlog设置 binlog-do-db 和 binlog-ignore-db
+# 两个参数为互斥关系，一般只选择其一设置
+# 只记录指定数据库的二进制日志，默认全部记录
+# binlog-do-db=
+# 表示不记录指定的数据库的二进制日志
+# binlog-ignore-db=
+
 # 最大连接数
 max_connections=1000
 # 指定单个查询可以使用的缓冲区的大小，一般默认值是1M
