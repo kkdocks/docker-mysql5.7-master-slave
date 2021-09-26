@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
-      - "./master/config/conf.d:/etc/mysql/conf.d"
+      - "./master/config:/etc/mysql/conf.d"
       - "./master/data:/var/lib/mysql"
     restart: always
     privileged: true
@@ -27,7 +27,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: "123456"
     volumes:
-      - "./slave/config/conf.d:/etc/mysql/conf.d"
+      - "./slave/config:/etc/mysql/conf.d"
       - "./slave/data:/var/lib/mysql"
     restart: always
     privileged: true
